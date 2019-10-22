@@ -1,0 +1,4 @@
+<p class="font-weight-bold text-center" style="margin-top: 1rem;">Regiones</p>
+<div *ngFor="let reg of this.regiones" class="text-center" style="margin: 1rem;">
+    <button class="btn btn-info" name="reg.name" [value]="reg.idregion" (click)="setRegion($event,reg.idregion)">{{reg.nombreregion}}</button>
+</div>

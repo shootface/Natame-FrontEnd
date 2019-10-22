@@ -1,0 +1,85 @@
+<section id="register" class="mb-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+                <div class="card_register">
+                    <div class="card">
+                    <div class="card-body text-center">
+                        <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+                            <h1 class="h3 mb-3 font-weight-normal">Registrar Cliente</h1>
+                            <div class="alert alert-danger" role="alert" *ngIf="isError">
+                                {{msgError}}
+                            </div>
+                            <div class="form-group"><!--username-->
+                                <input type="text" #username="ngModel" name="username" class="form-control" placeholder="username" [(ngModel)]="cliente.username" required maxlength="50">
+                                <div class="alert alert-danger" role="alert" *ngIf="username.touched && !username.valid">
+                                    <div *ngIf="username.errors.required">Username is required</div>
+                                    <div *ngIf="username.errors.maxlength">Username must be max 15</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--type-->
+                                <select #type="ngModel" name="type" class="form-control" [(ngModel)]="cliente.type">
+                                    <option>CC</option>
+                                    <option>TI</option>
+                                    <option>PP</option>
+                                    <option>CE</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><!--cedula-->
+                                <input type="number" #cedula="ngModel" name="cedula" class="form-control" placeholder="cedula" [(ngModel)]="cliente.cedula" required maxlength="15">
+                                <div class="alert alert-danger" role="alert" *ngIf="cedula.touched && !cedula.valid">
+                                    <div *ngIf="cedula.errors.required">cedula is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--nombre-->
+                                <input type="text" #nombre="ngModel" name="nombre" class="form-control" placeholder="nombre" [(ngModel)]="cliente.nombrecliente" required maxlength="50">
+                                <div class="alert alert-danger" role="alert" *ngIf="nombre.touched && !nombre.valid">
+                                    <div *ngIf="nombre.errors.required">Name is required</div>
+                                    <div *ngIf="nombre.errors.maxlength">Name must be max 15</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--apellido-->
+                                <input type="text" #apellido="ngModel" name="apellido" class="form-control" placeholder="apellido" [(ngModel)]="cliente.apellidocliente" required maxlength="50">
+                                <div class="alert alert-danger" role="alert" *ngIf="apellido.touched && !apellido.valid">
+                                    <div *ngIf="apellido.errors.required">Name is required</div>
+                                    <div *ngIf="apellido.errors.maxlength">Name must be max 15</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--Telefono de contacto-->
+                                <input type="text"  #telefono="ngModel" name="telefonocontacto" class="form-control" placeholder="telefono" [(ngModel)]="cliente.telefonoContacto" required>
+                                <div class="alert alert-danger" role="alert" *ngIf="telefono.touched && !telefono.valid">
+                                    <div *ngIf="telefono.errors.required">Email is required</div>
+                                    <div *ngIf="telefono.errors.minlength">Email must be at least 8 characters</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--Direccion-->
+                                <input type="text"  #direcion="ngModel" name="direccion" class="form-control" placeholder="direccion" [(ngModel)]="cliente.direccion" required>
+                                <div class="alert alert-danger" role="alert" *ngIf="direcion.touched && !direcion.valid">
+                                    <div *ngIf="direcion.errors.required">Email is required</div>
+                                    <div *ngIf="direcion.errors.minlength">Email must be at least 8 characters</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--ciudad-->
+                                <input type="text"  #ciudad="ngModel" name="ciudad" class="form-control" placeholder="ciudad" [(ngModel)]="cliente.ciudad" required>
+                                <div class="alert alert-danger" role="alert" *ngIf="ciudad.touched && !ciudad.valid">
+                                    <div *ngIf="ciudad.errors.required">ciudad is required</div>
+                                </div>
+                            </div>
+                            <div class="form-group"><!--email-->
+                                <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="cliente.correoelectronico" required
+                                minlength="8">
+                                <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+                                    <div *ngIf="email.errors.required">Email is required</div>
+                                    <div *ngIf="email.errors.minlength">Email must be at least 8 characters</div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+    </section>
+    

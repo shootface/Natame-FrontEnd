@@ -1,0 +1,95 @@
+<section *ngIf="!this.logged_in" id="register" class="mb-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+            <div class="card_register">
+                <div class="card">
+                <div class="card-body text-center">
+                    <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+                        <h1 class="h3 mb-3 font-weight-normal">Registrar Representante</h1>
+                        <div class="alert alert-danger" role="alert" *ngIf="isError">
+                            {{msgError}}
+                        </div>
+                        <div class="form-group"><!--username-->
+                            <input type="text" #username="ngModel" name="username" class="form-control" placeholder="username" [(ngModel)]="representante.username" required maxlength="50">
+                            <div class="alert alert-danger" role="alert" *ngIf="username.touched && !username.valid">
+                                <div *ngIf="username.errors.required">Username is required</div>
+                                <div *ngIf="username.errors.maxlength">Username must be max 15</div>
+                            </div>
+                        </div>
+                        <div class="form-group"><!--type-->
+                            <select #type="ngModel" name="type" class="form-control" [(ngModel)]="representante.type">
+                                <option>CC</option>
+                                <option>TI</option>
+                                <option>PP</option>
+                                <option>CE</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><!--identificacion-->
+                            <input type="number" #identificacion="ngModel" name="identificacion" class="form-control" placeholder="identificacion" [(ngModel)]="representante.identificacion" required maxlength="15">
+                            <div class="alert alert-danger" role="alert" *ngIf="!identificacion.valid">
+                                <div *ngIf="name.errors.required">idi is required</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group"><!--name-->
+                            <input type="text" #name="ngModel" name="name" class="form-control" placeholder="nombre" [(ngModel)]="representante.nombre" required maxlength="50">
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">
+                            <div *ngIf="name.errors.required">Name is required</div>
+                            <div *ngIf="name.errors.maxlength">Name must be max 15</div>
+                        </div>
+                        <div class="form-group"><!--email-->
+                            <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="representante.correoelectronico" required
+                            minlength="8">
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.minlength">Email must be at least 8 characters</div>
+                        </div>
+                        <div class="form-group"><!--Genero-->
+                            <select #genero="ngModel" name="genero" placeholder="genero" class="form-control" [(ngModel)]="representante.genero">
+                                <option>M</option>
+                                <option>F</option>
+                                <option>A</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><!--Telefono de contacto-->
+                            <input type="text"  #telefono="ngModel" name="telefonocontacto" class="form-control" placeholder="telefono" [(ngModel)]="representante.telefonoContacto" required>
+                        </div>
+                        <div class="form-group"><!--fechaNacimiento-->
+                            <input type="date" #fechaNacimiento="ngModel" name="fechaNacimiento" class="form-control" placeholder="fechaNacimiento" [(ngModel)]="representante.fechaNacimiento" required>
+                        </div>
+                        <div class="form-group"><!--Direccion-->
+                            <input type="text"  #Direcion="ngModel" name="direccion" class="form-control" placeholder="direccion" [(ngModel)]="representante.direccion" required>
+                        </div>
+                        <div class="form-group"><!--Region-->
+                            <select #region="ngModel" name="region" class="form-control" [(ngModel)]="representante.region">
+                                <option *ngFor="let reg of this.regiones" [value]="reg.idregion">
+                                    {{reg.nombreregion}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group"><!--grado-->
+                            <select #type="ngModel" name="type" class="form-control" [(ngModel)]="representante.grado">
+                                <option>BEGINEER</option>
+                                <option>JUNIOR</option>
+                                <option>SENIOR</option>
+                                <option>MASTER</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><!--esDirector-->
+                            <select #type="ngModel" name="type" class="form-control" [(ngModel)]="representante.esDirector">
+                                <option>N</option>
+                                <option>S</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+</section>
