@@ -45,7 +45,7 @@ export class ProductoComponent implements OnInit {
       error => {
         alert(error);
         console.log(error);
-        alert(error['error']);
+        alert(error['error']['message']);
       }
     )
   }
@@ -82,7 +82,7 @@ export class ProductoComponent implements OnInit {
       },
       error => {
         console.log(error);
-        alert(error['error']['text']);
+        alert(error['error']['message']);
         //alert(error['error']['text']);
       }
     )

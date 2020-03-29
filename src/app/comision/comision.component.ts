@@ -19,7 +19,7 @@ export class ComisionComponent implements OnInit {
           alert(response['comision'])
       },
       error => {
-        alert(error['error']['text']);
+        alert(error['error']['message']);
       }
     )
   }

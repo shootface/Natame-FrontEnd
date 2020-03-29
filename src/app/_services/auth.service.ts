@@ -16,7 +16,7 @@ export class AuthService {
         private gestioncredenciales:GestionarcredencialesService,
         private router: Router
         ) {}
-        public u = "http://localhost";
+        public u = "http://18.144.29.101:5000/";
 
     loginRe(user: string,password:string){
         let myheaders = new HttpHeaders();
@@ -25,6 +25,7 @@ export class AuthService {
         console.log(myheaders)
         const httpOptions = {headers:myheaders};
         return this.http.get<any>(this.u + "/api/representante",httpOptions);
+        //return this.http.get<any>("http://18.144.29.101:5000/api/test");
     }
     loginCli(user: string,password:string){
         let myheaders = new HttpHeaders();

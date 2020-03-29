@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
           },
           error => {
             console.log(error);
-            alert(error['error']['text']);
+            alert(error['error']['message']);
           }
         )
       }else if(this.user.type == 'C'){
@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
           },
           error => {
             console.log(error);
-            alert(error['error']['text']);
+            alert(error['error']['message']);
           }
         )
       }
