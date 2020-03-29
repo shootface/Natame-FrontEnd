@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
             this.gestionarcredencialesService.guardarType(response.tipoid);
             this.gestionarcredencialesService.guardarId(response.identificacion);
             this.router.navigate(['home/']);
+            location.reload();
           },
           error => {
             console.log(error);
@@ -67,7 +68,6 @@ export class LoginComponent implements OnInit {
             this.gestionarcredencialesService.guardarCredenciales(this.user.username,this.user.password);
             this.gestionarcredencialesService.guardarType(response.tipoid);
             this.gestionarcredencialesService.guardarId(response.identificacion);
-            location.reload();
             this.router.navigate(['productos']);
           },
           error => {
