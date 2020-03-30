@@ -16,7 +16,7 @@ export class AuthService {
         private gestioncredenciales:GestionarcredencialesService,
         private router: Router
         ) {}
-        public u = "http://18.144.29.101:5000/";
+        public u = "http://18.144.29.101:5000";
 
     loginRe(user: string,password:string){
         let myheaders = new HttpHeaders();
@@ -60,19 +60,19 @@ export class AuthService {
                 rmp = this.gestioncredenciales.obtenerUsuarioActual().replace("u","");
             }
             const data = {
-                "grado":grado,
-                "genero":genero,
-                "esdirector":esdirector,
-                "nombre":nombre,
-                "tipoid":type,
-                "direccion":direccion,
-                "usuario":username,
-                "region":region,
-                "fechacontrato":fechaContrato,
                 "identificacion":identificacion,
-                "fechanacimiento":fechaNacimiento,
+                "tipoid":type,
+                "nombre":nombre,
                 "correoelectronico":correoelectronico,
-                "telefonocontacto":telefonoContacto
+                "genero":genero,
+                "fechacontrato":fechaContrato,
+                "direccion":direccion,
+                "fechanacimiento":fechaNacimiento,
+                "telefonocontacto":telefonoContacto,
+                "esdirector":esdirector,
+                "grado":grado,
+                "region":region,
+                "usuario":username
             }
             return this.http.post<any>( this.u + "/api/representante",data,httpOptions);
     }

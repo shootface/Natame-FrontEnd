@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
+import { GestionarcredencialesService } from '../_services/gestionarcredenciales.service';
 
 @Component({
   selector: 'app-shooping-car',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoopingCarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService:AuthService,
+    private gestionarcredencialesService:GestionarcredencialesService,
+    private router: Router) {
+  }
 
   ngOnInit() {
+    console.log('Carrito',this.gestionarcredencialesService.obtenerItems())
   }
 
 }

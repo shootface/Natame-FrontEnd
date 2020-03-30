@@ -21,7 +21,7 @@ export class RegionComponent implements OnInit {
         console.log('Success: ', res);
       },
       error => {
-        alert(error['error']['text']);
+        alert(error['error']['message']);
       }
     );
   }

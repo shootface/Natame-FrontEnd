@@ -43,12 +43,12 @@ export class ProductoComponent implements OnInit {
         console.log('Success: ', res);
       },
       error => {
-        alert(error);
         console.log(error);
         alert(error['error']['message']);
       }
     )
   }
+
   onAdd(event,idproductoregion,can:number){
     console.log(idproductoregion);
     console.log("cantidad: "+can)
@@ -71,8 +71,8 @@ export class ProductoComponent implements OnInit {
     console.log(this.shoopPro);
   }
 
-  onSubmit(cantidad:number){
-    //console.log("cantidad: "+cantidad)
+  onSubmit(){
+    this.gestionarcredencialesService.guardarItems(this.shoopPro);
   }
   onPay(event,id:string){
     this.authenticationService.registarPedido(id,this.shoopPro)

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class GestionarcredencialesService {
+    public shoopPro = [];
     constructor() { }
     guardarCredenciales(user,pass){
         let userData:any;
@@ -18,6 +19,15 @@ export class GestionarcredencialesService {
 
     guardarId(id){
         localStorage.setItem('id',id);
+    }
+    guardarItems(Pro){
+        console.log('guardado');
+        localStorage.setItem('Products',JSON.stringify(Pro))
+        //this.shoopPro = Pro;
+        //console.log('G',this.shoopPro)
+    }
+    obtenerItems(){
+        return JSON.parse(localStorage.getItem('Products'))
     }
     obtenerId(){
         return localStorage.getItem('id');

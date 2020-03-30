@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         this.logged_in = false;
       },
       error => {
-        alert(error['error']['text']);
+        alert(error['error']['message']);
         this.logged_in = true;
       }
     );
@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['login']);
           },
           error => {
-            alert(error['error']['text']);
+            alert(error['error']['message']);
           }
         );
     }

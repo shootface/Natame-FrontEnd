@@ -1,20 +1,23 @@
-<div *ngFor="let pro of this.productos">
-    <div *ngIf="pro.cantidad>0" style="margin: 1rem; ">
-        <div class="card card-product" style="width: 18rem; margin: 0;">
-            <img class="img-wrap" src="assets\office.jpg" alt="image register" height="60%" width="100%">
-            <div class="card-body">
-                <h5 class="card-title">{{pro.nombreproducto}}</h5>
-                <div class="price-wrap h5">
-                    <span class="price-new">${{pro.precio}}</span>
+<div class="row p-3 justify-content-center">
+    <div *ngFor="let pro of this.productos" class="col-md-2 col-lg-2 col-xl-3" style="width: 350px;">
+        <div *ngIf="pro.cantidad>0">
+            <div class="m-0 scard card-product" style="width: 18rem;">
+                <img class="img-wrap" src="{{pro.nombreimagen}}" alt="${{pro.nombreimagen}}" height="300px" width="300px">
+                <div class="card-body">
+                    <h4 class="card-title">{{pro.nombreproducto}}</h4>
+                    <div class="price-wrap h5">
+                        <span class="price-new">${{pro.precio}} disponibles = {{pro.cantidad}}</span>
+                    </div>
+                    <p class="card-text"></p>
+                    <form (submit)="onSubmit(cantidad.value)">
+                        <input #cantidad type="number" class="form-control" placeholder="cantidad">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value)">Añadir al carrito</button>
+                    </form>
                 </div>
-                <p class="card-text">disponibles = {{pro.cantidad}}</p>
-                <form (submit)="onSubmit(cantidad.value)">
-                    <input #cantidad type="number" class="form-control" placeholder="cantidad">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value)">Añadir al carrito</button>
-                </form>
             </div>
         </div>
     </div>
+    <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="onSubmit()">Pagar</button>
 </div>
 <!--
 <h2>{{total}}</h2>
