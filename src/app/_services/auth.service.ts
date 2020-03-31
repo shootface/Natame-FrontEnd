@@ -130,22 +130,23 @@ export class AuthService {
         return await this.http.get<Producto[]>(this.u + "/api/productoregion/"+this.gestioncredenciales.obtenerRegion(),httpOptions).toPromise();
     }
 
-    registarPedido(mododepago:string,pd){
+    registarPedido(mododepago:string,cli,pd){
+        console.log('cli : ',cli[0]);
         let myheaders = new HttpHeaders();
             myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
             myheaders = myheaders.append("Content-Type", "application/json");
         const httpOptions = {headers:myheaders};
         const data = {
-            "identificacion":this.gestioncredenciales.obtenerId(),
-            "tipoid":this.gestioncredenciales.obtenerType(),
+            "identificacion":cli[0].identificacion,
+            "tipoid":cli[0].tipoid,
             "mododepago":mododepago,
             pd,
-            "estado":null,
-            "fechapedido": new Date(),
-
+            "fechapedido": new Date().toISOString().slice(0, 19).replace('T', ' ')
         }
+        console.log(data);
         return this.http.post<any>(this.u + "/api/pedido",data,httpOptions);
     }
+
     getComision(id:number){
         let myheaders = new HttpHeaders();
             myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());

@@ -23,7 +23,9 @@ export class ShoopingCarComponent implements OnInit {
   private productos = [];
   private clientes = [];
   private cliente = null;
+  private clienteData = [];
   private identificacion = null;
+  private metodoPago = null;
   private sub = 0;
   private tax = 0;
   private total = 0;
@@ -62,11 +64,22 @@ export class ShoopingCarComponent implements OnInit {
           }
         )
       }
+    for(let cli of this.clientes){
+      if(cli.identificacion == this.identificacion){
+        this.clienteData.push(
+          {
+            "identificacion":this.identificacion,
+            "tipoid":cli.tipoid
+          }
+        )
+      }
+    }
     console.log(this.productos);
-    this.authenticationService.registarPedido(id,this.shoopPro)
+    this.authenticationService.registarPedido(this.metodoPago,this.clienteData,this.productos)
     .subscribe(
       res => {
         console.log('Success: ', res);
+        alert(res['resultado']);
       },
       error => {
         console.log(error);
@@ -82,7 +95,7 @@ export class ShoopingCarComponent implements OnInit {
     .subscribe(
       (res:Cliente[]) => {
         this.clientes = res;
-        //console.log('Clientes: ', res);
+        console.log('Clientes: ', res);
       },
       error => {
         alert(error['error']['message']);
@@ -91,9 +104,12 @@ export class ShoopingCarComponent implements OnInit {
   }
 
   capturar() {
-    // Pasamos el valor seleccionado a la variable verSeleccion
-    this.cliente = this.identificacion;
-}
+    console.log(this.identificacion);
+  }
+
+  capturarMetodo(){
+    console.log(this.metodoPago);
+  }
 }
 //31
 //35

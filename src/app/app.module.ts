@@ -19,6 +19,7 @@ import { ShoopingCarComponent } from './shooping-car/shooping-car.component';
 import { RegionComponent } from './region/region.component';
 import { VentaComponent } from './venta/venta.component';
 import { CalificacionComponent } from './calificacion/calificacion.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { CalificacionComponent } from './calificacion/calificacion.component';
     ShoopingCarComponent,
     RegionComponent,
     VentaComponent,
-    CalificacionComponent
+    CalificacionComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,

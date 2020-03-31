@@ -69,6 +69,19 @@
                             </div>
                         </div>
                         <div class="bg-light rounded-pill px-4 py-3
+                            text-uppercase font-weight-bold">Selecciona un metodo pago</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Selecciona el metodo que desea utilizar</p>
+                            <div class="input-group mb-4 border rounded-pill
+                                p-2">
+                                    <select [(ngModel)]="metodoPago" (change)="capturarMetodo()" class="form-control border-0">
+                                        <option value="0">Selecciona una opción</option>
+                                        <option value="TC">Tarjeta de credito</option>
+                                        <option value="PSE">PSE</option>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="bg-light rounded-pill px-4 py-3
                             text-uppercase font-weight-bold">Recomendación de envio</div>
                         <div class="p-4">
                             <p class="font-italic mb-4">Si tiene alguna información para el vendedor,
@@ -77,6 +90,7 @@
                                 class="form-control"></textarea>
                         </div>
                     </div>
+                    
                     <div class="col-lg-6">
                         <div class="bg-light rounded-pill px-4 py-3
                             text-uppercase font-weight-bold">Resumen de orden
