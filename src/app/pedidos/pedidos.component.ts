@@ -10,6 +10,7 @@ import { GestionarcredencialesService } from '../_services/gestionarcredenciales
 export class PedidosComponent implements OnInit {
 
   private pedidos = [];
+
   constructor(
     private authenticationService:AuthService,
     private gestionarcredencialesService:GestionarcredencialesService

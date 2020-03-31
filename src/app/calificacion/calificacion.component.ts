@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
+import { GestionarcredencialesService } from '../_services/gestionarcredenciales.service';
 
 @Component({
   selector: 'app-calificacion',
@@ -6,10 +8,69 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calificacion.component.css']
 })
 export class CalificacionComponent implements OnInit {
-
-  constructor() { }
+  
+  private pedidos = [];
+  private id= null;
+  private calificacion = null;
+  private idPago = null;
+  
+  constructor(
+    private authenticationService:AuthService,
+    private gestionarcredencialesService:GestionarcredencialesService
+  ) { }
 
   ngOnInit() {
+    this.listarPedidos();
+  }
+  
+  capturar(){
+
   }
 
+  listarPedidos(){
+    this.authenticationService.getPedidos()
+    .subscribe(
+      res => {
+        this.pedidos = res;
+        console.log('Success: ', res);
+      },
+      error => {
+        console.log(error);
+        alert(error['error']['message']);
+        //alert(error['error']['text']);
+      }
+    )
+  }
+
+  onCalificar(event,id,calificacion){
+    this.authenticationService.calificarPedido(id,calificacion)
+    .subscribe(
+      res => {
+        console.log('Success: ', res);
+        alert(res['resultado']);
+        location.reload();
+      },
+      error => {
+        console.log(error);
+        alert(error['error']['message']);
+        //alert(error['error']['text']);
+      }
+    )
+  }
+
+  onPagar(event,idPago){
+    this.authenticationService.pagar(idPago)
+    .subscribe(
+      res => {
+        console.log('Success: ', res);
+        alert(res['resultado']);
+      },
+      error => {
+        console.log(error);
+        alert(error['error']['message']);
+        //alert(error['error']['text']);
+      }
+    )
+  }
+  
 }

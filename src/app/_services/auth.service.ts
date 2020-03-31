@@ -20,6 +20,36 @@ export class AuthService {
         ) {}
         public u = "http://18.144.29.101:5000";
 
+    calificarPedido(id: string,calificacion: string){
+        let myheaders = new HttpHeaders();
+        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+        myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        console.log('CALIFICACION',myheaders);
+        const data = {
+            "temp":id,
+        }
+        return this.http.post<any>(this.u +"/api/pedido/"+id+"/"+calificacion,data,httpOptions);
+    }
+    pagar(id: string){
+        let myheaders = new HttpHeaders();
+            myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+            myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        const data = {
+            "temp":id,
+        }
+        return this.http.post<any>( this.u + "/api/pagos/"+id,data,httpOptions);
+    }
+
+    getPedidos(){
+        let myheaders = new HttpHeaders();
+        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+        myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        console.log(myheaders);
+        return this.http.get<any>(this.u + "/api/pedido",httpOptions);
+    }
     loginRe(user: string,password:string){
         let myheaders = new HttpHeaders();
         myheaders = myheaders.append("Authorization", "Basic " + btoa(user+":"+password));
@@ -121,7 +151,7 @@ export class AuthService {
         const httpOptions = {headers:myheaders};
         return this.http.get<Region[]>(this.u+"/api/region",httpOptions);
     }
-
+    
     async getProductos(){
         let myheaders = new HttpHeaders();
             myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
@@ -155,27 +185,11 @@ export class AuthService {
         return this.http.get<any>(this.u+"/api/comision/"+id,httpOptions);
     }
 
-    getPedidos(){
-        let myheaders = new HttpHeaders();
-        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
-        myheaders = myheaders.append("Content-Type", "application/json");
-        const httpOptions = {headers:myheaders};
-        return this.http.get<any>(this.u + "/api/pedido",httpOptions);
-    }
-
     getClientes(){
         let myheaders = new HttpHeaders();
         myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
         myheaders = myheaders.append("Content-Type", "application/json");
         const httpOptions = {headers:myheaders};
         return this.http.get<any>(this.u + "/api/clienterv",httpOptions);
-    }
-
-    calificarPedido(id,calificacion){
-        let myheaders = new HttpHeaders();
-        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
-        myheaders = myheaders.append("Content-Type", "application/json");
-        const httpOptions = {headers:myheaders};
-        return this.http.post<any>(this.u + "/api/pedido/"+id+"/"+calificacion,httpOptions);
     }
 }

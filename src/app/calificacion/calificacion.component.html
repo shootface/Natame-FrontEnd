@@ -1,2 +1,59 @@
-<p>calificacion works!</p>
 <app-pedidos></app-pedidos>
+<div class="px-4 px-lg-0">
+    <div class="pb-5">
+        <div class="container">
+            <div class="row py-5 p-4 bg-white rounded shadow-sm">
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3
+                        text-uppercase font-weight-bold">Selecciona un pedido</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Selecciona el pedido que desea calificar</p>
+                        <div class="input-group mb-4 border rounded-pill
+                            p-2">
+                                <select [(ngModel)]="id" class="form-control border-0">
+                                    <option value="0">Selecciona una opción</option>
+                                    <option *ngFor="let ped of this.pedidos" [value]="ped.pedido">
+                                        {{ped.pedido}}
+                                    </option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="bg-light rounded-pill px-4 py-3
+                        text-uppercase font-weight-bold">Selecciona una calificacion</div>
+                    <div class="p-4">
+                        <p class="font-italic mb-4">Selecciona de 1 a 5</p>
+                        <div class="input-group mb-4 border rounded-pill
+                            p-2">
+                                <select [(ngModel)]="calificacion" class="form-control border-0">
+                                    <option value="0">Selecciona una opción</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                        </div>
+                        <button type="button" class="btn btn-dark rounded-pill py-2 btn-block" (click)="onCalificar($event,id,calificacion)">Calificar</button>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="bg-light rounded-pill px-4 py-3
+                        text-uppercase font-weight-bold">Pago pedido</div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4"></p>
+                            <div class="input-group mb-4 border rounded-pill
+                                p-2">
+                                    <select [(ngModel)]="idPago" class="form-control border-0">
+                                        <option value="0">Selecciona una opción</option>
+                                        <option *ngFor="let ped of this.pedidos" [value]="ped.pedido">
+                                            {{ped.pedido}}
+                                        </option>
+                                    </select>
+                            </div>
+                            <button type="button" class="btn btn-dark rounded-pill py-2 btn-block" (click)="onPagar($event,idPago)">Pagar</button>
+                        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
