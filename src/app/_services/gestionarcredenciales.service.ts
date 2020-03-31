@@ -23,11 +23,14 @@ export class GestionarcredencialesService {
     guardarItems(Pro){
         console.log('guardado');
         localStorage.setItem('Products',JSON.stringify(Pro))
-        //this.shoopPro = Pro;
+        this.shoopPro = Pro;
         //console.log('G',this.shoopPro)
     }
     obtenerItems(){
         return JSON.parse(localStorage.getItem('Products'))
+    }
+    limpiarItems(){
+        localStorage.removeItem('Products');
     }
     obtenerId(){
         return localStorage.getItem('id');

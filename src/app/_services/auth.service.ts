@@ -6,6 +6,7 @@ import { Producto } from '../_models/productos';
 import { UserInterface } from '../_models/UserInterface';
 import {Router} from '@angular/router';
 import { getRandomString } from 'selenium-webdriver/safari';
+import { resolve } from 'url';
 
 @Injectable({
     providedIn: "root"
@@ -120,12 +121,12 @@ export class AuthService {
         return this.http.get<Region[]>(this.u+"/api/region",httpOptions)
     }
 
-    getProductos(){
+    async getProductos(){
         let myheaders = new HttpHeaders();
             myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
             myheaders = myheaders.append("Content-Type", "application/json");
         const httpOptions = {headers:myheaders};
-        return this.http.get<Producto[]>(this.u + "/api/productoregion/"+this.gestioncredenciales.obtenerRegion(),httpOptions);
+        return await this.http.get<Producto[]>(this.u + "/api/productoregion/"+this.gestioncredenciales.obtenerRegion(),httpOptions).toPromise();
     }
 
     registarPedido(mododepago:string,pd){

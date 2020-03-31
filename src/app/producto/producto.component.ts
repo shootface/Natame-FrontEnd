@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { Producto } from '../_models/productos';
 import {Router} from '@angular/router';
 import { GestionarcredencialesService } from '../_services/gestionarcredenciales.service';
+import { resolve } from 'url';
 
 @Component({
   selector: 'app-producto',
@@ -19,12 +20,10 @@ export class ProductoComponent implements OnInit {
     private gestionarcredencialesService:GestionarcredencialesService,
     private router: Router
   ) {
-    if(this.gestionarcredencialesService.obtenerRegion()){
-      this.listProductos();
-    }
   }
 
   private producto:Producto = {
+    nombreimagen: null,
     nombreproducto:null,
     idproductoregion:null,
     cantidad:null,
@@ -33,23 +32,40 @@ export class ProductoComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.gestionarcredencialesService.obtenerRegion()){
+      this.listProductos().then( e => {
+        console.log('HOLO')
+      }
+      );
+    }
   }
 
-  listProductos(): void{
-    this.authenticationService.getProductos()
-    .subscribe(
-      (res:Producto[]) => {
-        this.productos = res;
-        console.log('Success: ', res);
-      },
+  async listProductos(){
+    await this.authenticationService.getProductos()
+    .then( res => {
+      this.productos = res;
+      console.log(res);
+    }
+    ).catch(
       error => {
         console.log(error);
         alert(error['error']['message']);
-      }
-    )
+        }
+    );
+    
+    //.subscribe(
+    //  (res:Producto[]) => {
+    //    this.productos = res;
+    //    console.log('Success: ', res);
+    //  },
+    //  error => {
+    //   console.log(error);
+    //    alert(error['error']['message']);
+    //  }
+    //)
   }
 
-  onAdd(event,idproductoregion,can:number){
+  onAdd(event,idproductoregion,can:number,pro){
     console.log(idproductoregion);
     console.log("cantidad: "+can)
     for(let pro of this.productos){
@@ -58,7 +74,8 @@ export class ProductoComponent implements OnInit {
         this.shoopPro.push(
           {
             "inventario":idproductoregion,
-            "cantidad":Number(can) 
+            "cantidad":Number(can),
+            "info":pro
           }
         )
         let temp:number = pro.precio*can;

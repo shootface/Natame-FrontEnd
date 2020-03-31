@@ -4,4 +4,12 @@ export interface Producto{
     cantidad:number;
     idProducto:number;
     precio: number;
+    nombreimagen:string;
 }
+
+//nombreimagen:
+//cantidad:
+//precio:
+//nombreproducto:
+//inventario: 
+//producto:

@@ -11,7 +11,7 @@
                     <p class="card-text"></p>
                     <form (submit)="onSubmit(cantidad.value)">
                         <input #cantidad type="number" class="form-control" placeholder="cantidad">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value)">Añadir al carrito</button>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value,pro)">Añadir al carrito</button>
                     </form>
                 </div>
             </div>
