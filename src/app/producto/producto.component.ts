@@ -13,8 +13,8 @@ import { resolve } from 'url';
 export class ProductoComponent implements OnInit {
   region_in:boolean;
   total:number = 0;
-  private shoopPro = [];
-  private productos = [];
+  public shoopPro = [];
+  public productos = [];
   constructor(
     private authenticationService:AuthService,
     private gestionarcredencialesService:GestionarcredencialesService,
@@ -22,7 +22,7 @@ export class ProductoComponent implements OnInit {
   ) {
   }
 
-  private producto:Producto = {
+  public producto:Producto = {
     nombreimagen: null,
     nombreproducto:null,
     idproductoregion:null,

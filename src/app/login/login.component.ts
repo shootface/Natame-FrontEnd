@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       this.logged_in = false;
     }
   }
-  private user: UserInterface = {
+  public user: UserInterface = {
     username: '',
     password: '',
     type:''

@@ -9,10 +9,10 @@ import { GestionarcredencialesService } from '../_services/gestionarcredenciales
 })
 export class CalificacionComponent implements OnInit {
   
-  private pedidos = [];
-  private id= null;
-  private calificacion = null;
-  private idPago = null;
+  public pedidos = [];
+  public id= null;
+  public calificacion = null;
+  public idPago = null;
   
   constructor(
     private authenticationService:AuthService,

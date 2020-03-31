@@ -10,7 +10,7 @@ import { Region } from '../_models/region';
   styleUrls: ['./region.component.css']
 })
 export class RegionComponent implements OnInit {
-  private regiones = [];
+  public regiones = [];
 
   constructor(private authService:AuthService,private gestioncredenciales:GestionarcredencialesService) {
     this.regiones=[];

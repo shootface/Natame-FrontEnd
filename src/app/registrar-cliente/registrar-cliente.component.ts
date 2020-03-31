@@ -19,7 +19,7 @@ export class RegistrarClienteComponent implements OnInit {
   }
   public isError = false;
   public msgError = '';
-  private cliente: Cliente = {
+  public cliente: Cliente = {
     cedula: null,
     nombrecliente: null,
     apellidocliente: null,

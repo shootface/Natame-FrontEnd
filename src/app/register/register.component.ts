@@ -13,7 +13,7 @@ import { Region } from '../_models/region';
 })
 export class RegisterComponent implements OnInit {
   logged_in:boolean;
-  private regiones = [];
+  public regiones = [];
   constructor(
     //private router:Router,
     private authService:AuthService,
@@ -35,7 +35,8 @@ export class RegisterComponent implements OnInit {
   }
   public isError = false;
   public msgError = '';
-  private representante: Representante = {
+
+  public representante: Representante = {
     identificacion: null,
     grado:null,
     esDirector:null,

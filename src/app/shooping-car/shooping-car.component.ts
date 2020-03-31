@@ -19,17 +19,17 @@ export class ShoopingCarComponent implements OnInit {
     private router: Router){
   }
 
-  private shoopPro = [];
-  private productos = [];
-  private clientes = [];
-  private cliente = null;
-  private clienteData = [];
-  private identificacion = null;
-  private metodoPago = null;
-  private sub = 0;
-  private tax = 0;
-  private total = 0;
-  private doc = null;
+  public shoopPro = [];
+  public productos = [];
+  public clientes = [];
+  public cliente = null;
+  public clienteData = [];
+  public identificacion = null;
+  public metodoPago = null;
+  public sub = 0;
+  public tax = 0;
+  public total = 0;
+  public doc = null;
 
   ngOnInit() {
     console.log('INICIE');

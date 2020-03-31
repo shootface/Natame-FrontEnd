@@ -9,7 +9,7 @@
                         <span class="price-new">${{pro.precio}} disponibles = {{pro.cantidad}}</span>
                     </div>
                     <p class="card-text"></p>
-                    <form (submit)="onSubmit(cantidad.value)">
+                    <form (submit)="onSubmit()">
                         <input #cantidad type="number" class="form-control" placeholder="cantidad">
                         <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value,pro)">Añadir al carrito</button>
                     </form>

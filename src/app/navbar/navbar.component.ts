@@ -9,7 +9,7 @@ import { GestionarcredencialesService } from '../_services/gestionarcredenciales
 export class NavbarComponent implements OnInit {
 
   logged_in:boolean;
-  private type = '';
+  public type = '';
 
   constructor(
     private gestionarcredencialesService:GestionarcredencialesService,
