@@ -10,6 +10,7 @@ import { ComisionComponent } from './comision/comision.component'
 import { ShoopingCarComponent } from './shooping-car/shooping-car.component';
 import { RegionComponent } from './region/region.component';
 import { VentaComponent } from './venta/venta.component';
+import { CalificacionComponent } from './calificacion/calificacion.component';
 import { from } from 'rxjs';
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path:'comision',component:ComisionComponent},
   {path:'login',component:LoginComponent},
   {path:'Car',component:ShoopingCarComponent},
+  {path:'Calificacion',component:CalificacionComponent},
   {path: '**',component:HomeComponent},
 ];
 

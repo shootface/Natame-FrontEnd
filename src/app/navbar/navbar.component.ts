@@ -9,6 +9,7 @@ import { GestionarcredencialesService } from '../_services/gestionarcredenciales
 export class NavbarComponent implements OnInit {
 
   logged_in:boolean;
+  private type = '';
 
   constructor(
     private gestionarcredencialesService:GestionarcredencialesService,
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
     }else{
       this.logged_in = false;
     }
+    this.type = this.gestionarcredencialesService.obtenerUserType();
   }
 
   closeSesion(){

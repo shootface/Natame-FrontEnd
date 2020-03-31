@@ -18,6 +18,7 @@ import { ComisionComponent } from './comision/comision.component';
 import { ShoopingCarComponent } from './shooping-car/shooping-car.component';
 import { RegionComponent } from './region/region.component';
 import { VentaComponent } from './venta/venta.component';
+import { CalificacionComponent } from './calificacion/calificacion.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { VentaComponent } from './venta/venta.component';
     ComisionComponent,
     ShoopingCarComponent,
     RegionComponent,
-    VentaComponent
+    VentaComponent,
+    CalificacionComponent
   ],
   imports: [
     BrowserModule,

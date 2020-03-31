@@ -28,10 +28,14 @@ export class ProductoComponent implements OnInit {
     idproductoregion:null,
     cantidad:null,
     idProducto:null,
-    precio: null
+    precio: null,
+    impuesto: null
   }
 
   ngOnInit() {
+    if(this.gestionarcredencialesService.obtenerItems()){
+      this.shoopPro = this.gestionarcredencialesService.obtenerItems();
+    }
     if(this.gestionarcredencialesService.obtenerRegion()){
       this.listProductos().then( e => {
         console.log('HOLO')
@@ -67,10 +71,25 @@ export class ProductoComponent implements OnInit {
 
   onAdd(event,idproductoregion,can:number,pro){
     console.log(idproductoregion);
-    console.log("cantidad: "+can)
+    console.log("cantidad: "+can);
+    let temp = true;
+    let i=0;
     for(let pro of this.productos){
-      if(pro.inventario==idproductoregion){
-        console.log(pro);
+      if(this.shoopPro){
+        for(let pro2 of this.shoopPro){ 
+          if(pro2.inventario == idproductoregion){
+            if(pro2.cantidad == can){
+              temp = false;
+            }else{
+              console.log('Borrar: ',i);
+              this.shoopPro.splice(i,1);
+            }
+          }
+          i++;
+        }
+      }
+      if(pro.inventario==idproductoregion && temp){
+        //console.log(pro);
         this.shoopPro.push(
           {
             "inventario":idproductoregion,
@@ -78,11 +97,8 @@ export class ProductoComponent implements OnInit {
             "info":pro
           }
         )
-        let temp:number = pro.precio*can;
-        console.log("TEMP :"+temp);
-        this.total = this.total + temp;
-        console.log("TOTAL :"+this.total);
       }
+      console.log('i',i);
     }
     console.log(this.total);
     console.log(this.shoopPro);
@@ -90,19 +106,5 @@ export class ProductoComponent implements OnInit {
 
   onSubmit(){
     this.gestionarcredencialesService.guardarItems(this.shoopPro);
-  }
-  onPay(event,id:string){
-    this.authenticationService.registarPedido(id,this.shoopPro)
-    .subscribe(
-      res => {
-        console.log('Success: ', res);
-      },
-      error => {
-        console.log(error);
-        alert(error['error']['message']);
-        //alert(error['error']['text']);
-      }
-    )
-    this.productos = [];
   }
 }

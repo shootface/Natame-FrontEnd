@@ -5,6 +5,7 @@ export interface Producto{
     idProducto:number;
     precio: number;
     nombreimagen:string;
+    impuesto: number;
 }
 
 //nombreimagen:

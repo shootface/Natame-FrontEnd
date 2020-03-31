@@ -16,7 +16,9 @@ export class GestionarcredencialesService {
     guardarType(type){
         localStorage.setItem('type',type);
     }
-
+    guardarUserType(type){
+        localStorage.setItem('Utype',type);
+    }
     guardarId(id){
         localStorage.setItem('id',id);
     }
@@ -27,16 +29,16 @@ export class GestionarcredencialesService {
         //console.log('G',this.shoopPro)
     }
     obtenerItems(){
-        return JSON.parse(localStorage.getItem('Products'))
-    }
-    limpiarItems(){
-        localStorage.removeItem('Products');
+        return JSON.parse(localStorage.getItem('Products'));
     }
     obtenerId(){
         return localStorage.getItem('id');
     }
     obtenerType(){
         return localStorage.getItem('type');
+    }
+    obtenerUserType(){
+        return localStorage.getItem('Utype');
     }
     obtenerUsuarioActual(){
         return localStorage.getItem('username');
@@ -49,6 +51,7 @@ export class GestionarcredencialesService {
     borrarCredenciales(){
         localStorage.removeItem('username');
         localStorage.removeItem('currentUser');
+        localStorage.removeItem('Products');
     }
 
     obtenerRegion(){

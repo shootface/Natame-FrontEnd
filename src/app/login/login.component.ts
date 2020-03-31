@@ -49,6 +49,7 @@ export class LoginComponent implements OnInit {
             this.gestionarcredencialesService.guardarCredenciales(this.user.username,this.user.password);
             //console.log("TYPE : ",response.tipoid)
             this.gestionarcredencialesService.guardarType(response.tipoid);
+            this.gestionarcredencialesService.guardarUserType(this.user.type);
             this.gestionarcredencialesService.guardarId(response.identificacion);
             this.router.navigate(['home/']);
             location.reload();
@@ -67,8 +68,10 @@ export class LoginComponent implements OnInit {
             console.log("TYPE : ",response.tipoid)
             this.gestionarcredencialesService.guardarCredenciales(this.user.username,this.user.password);
             this.gestionarcredencialesService.guardarType(response.tipoid);
+            this.gestionarcredencialesService.guardarUserType(this.user.type);
             this.gestionarcredencialesService.guardarId(response.identificacion);
             this.router.navigate(['productos']);
+            location.reload();
           },
           error => {
             console.log(error);
@@ -91,6 +94,7 @@ export class LoginComponent implements OnInit {
   closeSesion(){
     this.gestionarcredencialesService.borrarCredenciales();
     this.logged_in = false;
+    this.router.navigate(['home/']);
     //location.reload();
   }
 }

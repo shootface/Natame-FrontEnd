@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import {GestionarcredencialesService} from '../_services/gestionarcredenciales.service'
 import { Region } from '../_models/region';
 import { Producto } from '../_models/productos';
+
 import { UserInterface } from '../_models/UserInterface';
 import {Router} from '@angular/router';
 import { getRandomString } from 'selenium-webdriver/safari';
@@ -138,15 +139,34 @@ export class AuthService {
             "identificacion":this.gestioncredenciales.obtenerId(),
             "tipoid":this.gestioncredenciales.obtenerType(),
             "mododepago":mododepago,
-            pd
+            pd,
+            "estado":null,
+            "fechapedido": new Date(),
+
         }
         return this.http.post<any>(this.u + "/api/pedido",data,httpOptions);
     }
     getComision(id:number){
         let myheaders = new HttpHeaders();
-            myheaders = myheaders.append("Authorization", "Basic " + btoa("adminnatame:12345"));
+            myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
             myheaders = myheaders.append("Content-Type", "application/json");
         const httpOptions = {headers:myheaders};
         return this.http.get<any>(this.u+"/api/comision/"+id,httpOptions);
+    }
+
+    getPedidos(){
+        let myheaders = new HttpHeaders();
+        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+        myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        return this.http.post<any>(this.u + "/api/pedido",httpOptions);
+    }
+
+    getClientes(){
+        let myheaders = new HttpHeaders();
+        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+        myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        return this.http.get<any>(this.u + "/api/clienterv",httpOptions);
     }
 }
