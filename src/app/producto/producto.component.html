@@ -1,22 +1,20 @@
 <div class="row p-3 justify-content-center">
     <div *ngFor="let pro of this.productos" class="col-md-2 col-lg-2 col-xl-3" style="width: 350px;">
-        <div *ngIf="pro.cantidad>0">
             <div class="m-0 scard card-product" style="width: 18rem;">
-                <img class="img-wrap" src="{{pro.nombreimagen}}" alt="${{pro.nombreimagen}}" height="300px" width="300px">
+                <img class="img-wrap" src="{{pro.v_nombreimagen}}" alt="${{pro.v_nombreimagen}}" height="300px" width="300px">
                 <div class="card-body">
-                    <h4 class="card-title">{{pro.nombreproducto}}</h4>
+                    <h4 class="card-title">{{pro.c_nombre}}</h4>
                     <div class="price-wrap h5">
-                        <span class="price-new">${{pro.precio}} disponibles = {{pro.cantidad}}</span>
+                        <span class="price-new">disponibles = {{pro.n_cantidad}}</span>
                     </div>
                     <p class="card-text"></p>
                     <form (submit)="onSubmit()">
                         <input #cantidad type="number" class="form-control" placeholder="cantidad">
-                        <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.idproductoregion" (click)="onAdd($event,pro.inventario,cantidad.value,pro)">Añadir al carrito</button>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block" [value]="pro.pk_producto" (click)="onAdd($event,pro.pk_producto,cantidad.value,pro)">Añadir al carrito</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
     <button type="submit" class="btn btn-lg btn-primary btn-block" (click)="onSubmit()">Pagar</button>
 </div>
 <!--

@@ -45,10 +45,10 @@ export class ProductoComponent implements OnInit {
   }
 
   async listProductos(){
-    await this.authenticationService.getProductos()
+    await this.authenticationService.productos()
     .then( res => {
-      this.productos = res;
-      console.log(res);
+      this.productos = res.productos;
+      console.log(this.productos);
     }
     ).catch(
       error => {
@@ -56,7 +56,6 @@ export class ProductoComponent implements OnInit {
         alert(error['error']['message']);
         }
     );
-    
     //.subscribe(
     //  (res:Producto[]) => {
     //    this.productos = res;
@@ -75,20 +74,7 @@ export class ProductoComponent implements OnInit {
     let temp = true;
     let i=0;
     for(let pro of this.productos){
-      if(this.shoopPro){
-        for(let pro2 of this.shoopPro){ 
-          if(pro2.inventario == idproductoregion){
-            if(pro2.cantidad == can){
-              temp = false;
-            }else{
-              console.log('Borrar: ',i);
-              this.shoopPro.splice(i,1);
-            }
-          }
-          i++;
-        }
-      }
-      if(pro.inventario==idproductoregion && temp){
+      if(pro.pk_producto==idproductoregion){
         //console.log(pro);
         this.shoopPro.push(
           {

@@ -19,7 +19,15 @@ export class AuthService {
         private router: Router
         ) {}
         public u = "http://18.144.29.101:5000";
+        public temp = "http://localhost:3000"; 
 
+        async productos(){
+        let myheaders = new HttpHeaders();
+        myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());
+        myheaders = myheaders.append("Content-Type", "application/json");
+        const httpOptions = {headers:myheaders};
+        return await this.http.get<any>(this.temp + "/productos",httpOptions).toPromise();
+    }
     calificarPedido(id: string,calificacion: string){
         let myheaders = new HttpHeaders();
         myheaders = myheaders.append("Authorization", "Basic " + this.gestioncredenciales.obtenerCredencialesUsuarioActual());

@@ -12,9 +12,6 @@
                                         <div class="p-2 px-3 text-uppercase">Producto</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
-                                        <div class="py-2 text-uppercase">Precio</div>
-                                    </th>
-                                    <th scope="col" class="border-0 bg-light">
                                         <div class="py-2 text-uppercase">Cantidad</div>
                                     </th>
                                     <th scope="col" class="border-0 bg-light">
@@ -27,7 +24,7 @@
                                     <th scope="row" class="border-0">
                                         <div class="p-2">
                                             <img
-                                                src="{{pro.info.nombreimagen}}"
+                                                src="{{pro.info.v_nombreimagen}}"
                                                 alt="" width="70"
                                                 class="img-fluid rounded
                                                 shadow-sm">
@@ -36,11 +33,10 @@
                                                 <h5 class="mb-0"> <a href="#"
                                                         class="text-dark
                                                         d-inline-block
-                                                        align-middle">{{pro.info.nombreproducto}}</a></h5>
+                                                        align-middle">{{pro.info.c_nombre}}</a></h5>
                                             </div>
                                         </div>
                                     </th>
-                                    <td class="border-0 align-middle"><strong>${{pro.info.precio}}</strong></td>
                                     <td class="border-0 align-middle"><strong>{{pro.cantidad}}</strong></td>
                                     <td class="border-0 align-middle"><a
                                             href="#" class="text-dark"><i
@@ -54,12 +50,14 @@
                 </div>
                 <div class="row py-5 p-4 bg-white rounded shadow-sm">
                     <div class="col-lg-6">
+                        <!--
                         <div class="bg-light rounded-pill px-4 py-3
                             text-uppercase font-weight-bold">Selecciona un cliente</div>
                         <div class="p-4">
                             <p class="font-italic mb-4">Selecciona el cliente que va a recibir esta orden</p>
                             <div class="input-group mb-4 border rounded-pill
                                 p-2">
+                                
                                     <select [(ngModel)]="identificacion" (change)="capturar()" class="form-control border-0">
                                         <option value="0">Selecciona una opción</option>
                                         <option *ngFor="let cli of this.clientes" [value]="cli.identificacion">
@@ -68,6 +66,7 @@
                                     </select>
                             </div>
                         </div>
+                        -->
                         <div class="bg-light rounded-pill px-4 py-3
                             text-uppercase font-weight-bold">Selecciona un metodo pago</div>
                         <div class="p-4">

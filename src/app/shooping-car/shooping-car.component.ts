@@ -40,9 +40,9 @@ export class ShoopingCarComponent implements OnInit {
     this.sub = 0;
     this.tax = 0;
     this.total = 0;
-    this.tarifas();
-    this.doc = this.gestionarcredencialesService.obtenerUsuarioActual();
-    this.getClientes();
+    //this.tarifas();
+    //this.doc = this.gestionarcredencialesService.obtenerUsuarioActual();
+    //this.getClientes();
   }
 
   tarifas(){
